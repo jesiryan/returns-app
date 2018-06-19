@@ -1,0 +1,546 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_white_1000"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?colorPrimary"
+        android:elevation="4dp"
+        android:gravity="center_horizontal"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/wheatensoda"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_wheatensoda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/buttermilk"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_buttermilk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/value"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/yellowlg"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_yellowlg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/brownlg"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_brownlg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/toaster"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_toaster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/harvest"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_harvest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/puravitamin"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_puravitamin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/multiseed"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_multiseed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/yellowsm"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_yellowsm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/brownsm"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_brownsm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/malt"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_malt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/brack"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_brack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/crusty"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_crusty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/smallplain"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_smallplain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/crumbs1lb"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_crumbs1lb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/crumbs5lb"
+                android:textAppearance="?android:textAppearanceLarge" />
+            <me.himanshusoni.quantityview.QuantityView
+                android:id="@+id/quantityView_custom_crumbs5lb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:qv_addButtonBackground="@drawable/add_selector"
+                app:qv_addButtonText="+1"
+                app:qv_addButtonTextColor="@color/md_white_1000"
+                app:qv_addTrayButtonBackground="@color/md_green_100"
+                app:qv_addTrayButtonText="@string/tray"
+                app:qv_addTrayButtonTextColor="@color/md_green_900"
+                app:qv_removeButtonBackground="@drawable/remove_selector"
+                app:qv_removeButtonText="-1"
+                app:qv_removeButtonTextColor="@color/md_white_1000"
+                app:qv_removeTrayButtonBackground="@color/md_red_100"
+                app:qv_removeTrayButtonText="@string/tray"
+                app:qv_removeTrayButtonTextColor="@color/md_red_900"
+                app:qv_maxQuantity="9999999"
+                app:qv_minQuantity="0"
+                app:qv_quantity="0"
+                app:qv_quantityDialog="false" />
+
+
+            <Button
+                android:id="@+id/buttonCalculate"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Calculate" />
+
+            <Button
+                android:id="@+id/clearAllButton"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Clear All" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

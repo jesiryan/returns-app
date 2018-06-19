@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Returns Counter</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="brownlg">Brown Large</string>
+    <string name="yellowlg">Yellow Large</string>
+    <string name="brownsm">Brown Small</string>
+    <string name="yellowsm">Yellow Small</string>
+    <string name="harvest">Harvest Batch</string>
+    <string name="malt">Malt Grain</string>
+    <string name="multiseed">Multiseed Low GI</string>
+    <string name="puravitamin">Puravitamin Energy</string>
+    <string name="toaster">Toaster</string>
+    <string name="value">Value Pan</string>
+    <string name="brack">Brack</string>
+    <string name="wheatensoda">Wheaten Soda</string>
+    <string name="buttermilk">Buttermilk Soda</string>
+    <string name="crumbs1lb">1lb Crumbs</string>
+    <string name="crumbs5lb">5lb Crumbs</string>
+    <string name="crusty">Crusty</string>
+    <string name="tray">TRAY</string>
+    <string name="smallplain">Small Plain</string>
+    <string name="brownlgPrice">1.841</string>
+    <string name="yellowlgPrice">1.867</string>
+    <string name="brownsmPrice">1.094</string>
+    <string name="yellowsmPrice">1.094</string>
+    <string name="harvestPrice">1.841</string>
+    <string name="maltPrice">1.616</string>
+    <string name="multiseedPrice">2.733</string>
+    <string name="puravitaminPrice">1.841</string>
+    <string name="toasterPrice">1.867</string>
+    <string name="valuePrice">1.250</string>
+    <string name="brackPrice">2.552</string>
+    <string name="wheatensodaPrice">1.501</string>
+    <string name="buttermilkPrice">1.824</string>
+    <string name="crumbs1lbPrice">1.179</string>
+    <string name="crumbs5lbPrice">5.647</string>
+    <string name="crustyPrice">1.824</string>
+    <string name="smallplainPrice">1.094</string>
+</resources>
