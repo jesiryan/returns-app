@@ -32,10 +32,9 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
             supportActionBar.setDisplayHomeAsUpEnabled(false);
         }
 
-        CopyOnWriteArrayList<QuantityView> quantities = getQuantityViews();
-        for (QuantityView qv: quantities) {
-            qv.setOnQuantityChangeListener(this);
-
+        CopyOnWriteArrayList<ProductQtyObj> quantities = getProductQtyObjList();
+        for (ProductQtyObj qv: quantities) {
+            qv.getQuantityView().setOnQuantityChangeListener(this);
         }
 
         ClearAllActivity clearAllActivity = new ClearAllActivity();
@@ -103,19 +102,17 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
     }
 
     public void clearAll() {
-        CopyOnWriteArrayList<QuantityView> quantities = getQuantityViews();
-        for (QuantityView q: quantities) q.setQuantity(0);
-    }
-
-    public CopyOnWriteArrayList<QuantityView> getQuantityViews(){
-
+//        CopyOnWriteArrayList<QuantityView> quantities = getQuantityViews();
         CopyOnWriteArrayList<ProductQtyObj> quantities = getProductQtyObjList();
-        CopyOnWriteArrayList<QuantityView> quantityViews = new CopyOnWriteArrayList<>();
-        for (ProductQtyObj qv: quantities) {
-            quantityViews.add(qv.getQuantityView());
+        for (ProductQtyObj q: quantities) {
+            onQuantityChanged(q.getQuantityView(),q.getProductName(), q.getQuantityView().getQuantity(),0,false);
+            q.getQuantityView().setQuantity(0);
         }
-        return quantityViews;
     }
+
+//    public CopyOnWriteArrayList<QuantityView> getQuantityViews() {
+//        return quantities;
+//    }
 
     public String getAllProductsAndPrices(){
         CopyOnWriteArrayList<ProductQtyObj> productQtyObjs = getProductQtyObjList();
@@ -146,8 +143,8 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
     }
 
     @Override
-    public  void onQuantityChanged(QuantityView quantityView, int oldQuantity, int newQuantity, boolean programmatically) {
-        Toast.makeText(MainActivity.this, "Old Quantity: " +oldQuantity, Toast.LENGTH_LONG).show();
+    public  void onQuantityChanged(QuantityView quantityView, String extraMessage, int oldQuantity, int newQuantity, boolean programmatically) {
+        Toast.makeText(MainActivity.this, "Product: "+extraMessage+" \nOld Quantity: " +oldQuantity+" \nNew Quantity: "+newQuantity, Toast.LENGTH_LONG).show();
         quantityView.setQuantity(newQuantity);
 //        Toast.makeText(MainActivity.this, "Quantity: " + newQuantity, Toast.LENGTH_LONG).show();
     }

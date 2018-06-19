@@ -39,12 +39,13 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
     private Button mButtonAdd, mButtonRemove, mTrayButtonAdd, mTrayButtonRemove, mClearButton;
     private TextView mTextViewQuantity;
 
+    private String productName = "";
     private String labelDialogTitle = "Change Quantity";
     private String labelPositiveButton = "Change";
     private String labelNegativeButton = "Cancel";
 
     public interface OnQuantityChangeListener {
-        void onQuantityChanged(QuantityView quantityView, int oldQuantity, int newQuantity, boolean programmatically);
+        void onQuantityChanged(QuantityView quantityView, String extraMessage, int oldQuantity, int newQuantity, boolean programmatically);
 //        void onQuantityChanged(int oldQuantity, int newQuantity, boolean programmatically);
 
         void onLimitReached();
@@ -237,7 +238,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
                 quantity += 1;
                 mTextViewQuantity.setText(String.valueOf(quantity));
                 if (onQuantityChangeListener != null)
-                    onQuantityChangeListener.onQuantityChanged(this, oldQty, quantity, false);
+                    onQuantityChangeListener.onQuantityChanged(this,"", oldQty, quantity, false);
             }
         } else if (v == mTrayButtonAdd) {
             if (quantity + 15 > maxQuantity) {
@@ -247,7 +248,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
                 quantity += 15;
                 mTextViewQuantity.setText(String.valueOf(quantity));
                 if (onQuantityChangeListener != null)
-                    onQuantityChangeListener.onQuantityChanged(this, oldQty, quantity, false);
+                    onQuantityChangeListener.onQuantityChanged(this,"", oldQty, quantity, false);
             }
         } else if (v == mButtonRemove) {
             if (quantity - 1 < minQuantity) {
@@ -257,7 +258,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
                 quantity -= 1;
                 mTextViewQuantity.setText(String.valueOf(quantity));
                 if (onQuantityChangeListener != null)
-                    onQuantityChangeListener.onQuantityChanged(this, oldQty, quantity, false);
+                    onQuantityChangeListener.onQuantityChanged(this,"", oldQty, quantity, false);
             }
         } else if (v == mTrayButtonRemove) {
             if (quantity - 15 < minQuantity) {
@@ -267,9 +268,10 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
                 quantity -= 15;
                 mTextViewQuantity.setText(String.valueOf(quantity));
                 if (onQuantityChangeListener != null)
-                    onQuantityChangeListener.onQuantityChanged(this, oldQty, quantity, false);
+                    onQuantityChangeListener.onQuantityChanged(this,"", oldQty, quantity, false);
             }
         }else if (v == mClearButton) {
+            onQuantityChangeListener.onQuantityChanged(this, "", this.getQuantity(), 0, false);
             setQuantity(0);
         } else if (v == mTextViewQuantity) {
             if (!quantityDialog) return;
@@ -617,5 +619,13 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }
