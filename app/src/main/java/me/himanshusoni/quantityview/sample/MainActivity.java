@@ -1,11 +1,10 @@
 package me.himanshusoni.quantityview.sample;
 
-//import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -147,7 +147,9 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
 
     @Override
     public  void onQuantityChanged(QuantityView quantityView, int oldQuantity, int newQuantity, boolean programmatically) {
+        Toast.makeText(MainActivity.this, "Old Quantity: " +oldQuantity, Toast.LENGTH_LONG).show();
         quantityView.setQuantity(newQuantity);
+//        Toast.makeText(MainActivity.this, "Quantity: " + newQuantity, Toast.LENGTH_LONG).show();
     }
 //    @Override
 //    public void onQuantityChanged(int oldQuantity, int newQuantity, boolean programmatically) {

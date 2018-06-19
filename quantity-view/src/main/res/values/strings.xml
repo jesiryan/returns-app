@@ -3,7 +3,7 @@
 
     <string name="qv_add">+</string>
     <string name="qv_remove">-</string>
-    <string name="qv_addTray">+15</string>
-    <string name="qv_removeTray">-15</string>
-    <string name="qv_clear">clear</string>
+    <string name="qv_addTray">TRAY</string>
+    <string name="qv_removeTray">TRAY</string>
+    <string name="qv_clear">CLEAR</string>
 </resources>

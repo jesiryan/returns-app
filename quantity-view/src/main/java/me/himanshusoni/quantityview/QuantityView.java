@@ -45,6 +45,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
 
     public interface OnQuantityChangeListener {
         void onQuantityChanged(QuantityView quantityView, int oldQuantity, int newQuantity, boolean programmatically);
+//        void onQuantityChanged(int oldQuantity, int newQuantity, boolean programmatically);
 
         void onLimitReached();
     }
@@ -617,6 +618,4 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
             return false;
         }
     }
-
-
 }
