@@ -7,11 +7,17 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
@@ -32,8 +38,12 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
             supportActionBar.setDisplayHomeAsUpEnabled(false);
         }
 
+        setupQuantityViewsNames();
+
         CopyOnWriteArrayList<ProductQtyObj> quantities = getProductQtyObjList();
-        for (ProductQtyObj qv: quantities) {
+        for (final ProductQtyObj qv : quantities) {
+//            qv.getQuantityView().setQuantityClickListener(getQuantityChangeViewListener(qv.getQuantityView()));
+//            getQuantityChangeViewListener(qv.getQuantityView());
             qv.getQuantityView().setOnQuantityChangeListener(this);
         }
 
@@ -45,6 +55,13 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
         Button calculateButton = (Button) findViewById(R.id.buttonCalculate);
         calculateButton.setOnClickListener(calculateActivity);
 
+    }
+
+    private void setupQuantityViewsNames() {
+        CopyOnWriteArrayList<ProductQtyObj> pqoList = getProductQtyObjList();
+        for (ProductQtyObj pqo : pqoList) {
+            pqo.getQuantityView().setProductName(pqo.getProductName());
+        }
     }
 
     public CopyOnWriteArrayList<ProductQtyObj> getProductQtyObjList() {
@@ -67,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
                 crumb5lbPrice = Float.parseFloat(getResources().getString(R.string.crumbs5lbPrice)), smallplainPrice = Float.parseFloat(getResources().getString(R.string.smallplainPrice)),
                 harvestPrice = Float.parseFloat(getResources().getString(R.string.harvestPrice));
 
-        CopyOnWriteArrayList<ProductQtyObj> productQtyObjs = new CopyOnWriteArrayList();
+        CopyOnWriteArrayList<ProductQtyObj> productQtyObjs = new CopyOnWriteArrayList<>();
         productQtyObjs.add(new ProductQtyObj(crusty, (QuantityView) findViewById(R.id.quantityView_custom_crusty), crustyPrice));
         productQtyObjs.add(new ProductQtyObj(smallplain, (QuantityView) findViewById(R.id.quantityView_custom_smallplain), smallplainPrice));
         productQtyObjs.add(new ProductQtyObj(wheatensoda, (QuantityView) findViewById(R.id.quantityView_custom_wheatensoda), wheatensodaPrice));
@@ -84,18 +101,18 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
         productQtyObjs.add(new ProductQtyObj(pura, (QuantityView) findViewById(R.id.quantityView_custom_puravitamin), puraPrice));
         productQtyObjs.add(new ProductQtyObj(multi, (QuantityView) findViewById(R.id.quantityView_custom_multiseed), multiPrice));
         productQtyObjs.add(new ProductQtyObj(malt, (QuantityView) findViewById(R.id.quantityView_custom_malt), maltPrice));
-        productQtyObjs.add(new ProductQtyObj(valuepan,(QuantityView) findViewById(R.id.quantityView_custom_value), valuepanPrice));
+        productQtyObjs.add(new ProductQtyObj(valuepan, (QuantityView) findViewById(R.id.quantityView_custom_value), valuepanPrice));
 
         return productQtyObjs;
     }
 
-    public class CalculateActivity extends Activity implements View.OnClickListener {
+    private class CalculateActivity extends Activity implements View.OnClickListener {
         public void onClick(View v) {
             alertOneButton();
         }
     }
 
-    public class ClearAllActivity extends Activity implements View.OnClickListener {
+    private class ClearAllActivity extends Activity implements View.OnClickListener {
         public void onClick(View v) {
             clearAll();
         }
@@ -104,63 +121,61 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
     public void clearAll() {
 //        CopyOnWriteArrayList<QuantityView> quantities = getQuantityViews();
         CopyOnWriteArrayList<ProductQtyObj> quantities = getProductQtyObjList();
-        for (ProductQtyObj q: quantities) {
-            onQuantityChanged(q.getQuantityView(),q.getProductName(), q.getQuantityView().getQuantity(),0,false);
+        for (ProductQtyObj q : quantities) {
+            if (q.getProductQty() != 0) {
+                onQuantityChanged(q.getQuantityView(), q.getProductName(), q.getQuantityView().getQuantity(), 0, false);
+            }
             q.getQuantityView().setQuantity(0);
         }
     }
 
-//    public CopyOnWriteArrayList<QuantityView> getQuantityViews() {
-//        return quantities;
-//    }
-
-    public String getAllProductsAndPrices(){
+    public String getAllProductsAndPrices() {
         CopyOnWriteArrayList<ProductQtyObj> productQtyObjs = getProductQtyObjList();
         StringBuilder items = new StringBuilder();
         for (ProductQtyObj pqo : productQtyObjs) {
-            if(pqo.getProductQty()>0){
-                items.append(pqo.getProductQty()+"    \t"+pqo.getProductName()+"   \t "+pqo.getTotal()+"\n");
+            if (pqo.getProductQty() > 0) {
+                items.append(pqo.getProductQty());
+                items.append("    ");
+                items.append(pqo.getProductName());
+                items.append("            ");
+                items.append(pqo.getTotal());
+                items.append("\n");
             }
         }
         return items.toString();
     }
 
-    public double calculate(){
+    public double calculate() {
         double total = 0;
         CopyOnWriteArrayList<ProductQtyObj> productQtyObjs = getProductQtyObjList();
 
-        for (ProductQtyObj pqo:productQtyObjs) {
+        for (ProductQtyObj pqo : productQtyObjs) {
             total = total + pqo.getTotal();
         }
 
-        return toTwoPlaces(Float.parseFloat(""+total));
+        return toTwoPlaces(Float.parseFloat("" + total));
     }
 
-    public static double toTwoPlaces(float number){
+    public static double toTwoPlaces(float number) {
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(2);
         return Double.parseDouble(df.format(number));
     }
 
     @Override
-    public  void onQuantityChanged(QuantityView quantityView, String extraMessage, int oldQuantity, int newQuantity, boolean programmatically) {
-        Toast.makeText(MainActivity.this, "Product: "+extraMessage+" \nOld Quantity: " +oldQuantity+" \nNew Quantity: "+newQuantity, Toast.LENGTH_LONG).show();
+    public void onQuantityChanged(QuantityView quantityView, String productName, int oldQuantity, int newQuantity, boolean programmatically) {
+        if (oldQuantity == newQuantity) {
+            Toast.makeText(MainActivity.this, "no change", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(MainActivity.this, "Product: " + productName + " \nOld Quantity: " + oldQuantity + " \nNew Quantity: " + newQuantity, Toast.LENGTH_LONG).show();
+        }
         quantityView.setQuantity(newQuantity);
-//        Toast.makeText(MainActivity.this, "Quantity: " + newQuantity, Toast.LENGTH_LONG).show();
     }
-//    @Override
-//    public void onQuantityChanged(int oldQuantity, int newQuantity, boolean programmatically) {
-//        QuantityView quantityViewCustom1 = (QuantityView) findViewById(R.id.quantityView_custom_value);
-//        if (newQuantity == 3) {
-//            quantityViewCustom1.setQuantity(oldQuantity);
-//        }
-//        Toast.makeText(MainActivity.this, "Quantity: " + newQuantity, Toast.LENGTH_LONG).show();
-//    }
 
     public void alertOneButton() {
         new AlertDialog.Builder(this)
                 .setTitle("Total Value")
-                .setMessage(getAllProductsAndPrices()+"\n"+"Total: "+calculate())
+                .setMessage(getAllProductsAndPrices() + "\n" + "Total: " + calculate())
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();

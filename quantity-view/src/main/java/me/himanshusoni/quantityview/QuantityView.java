@@ -47,7 +47,6 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
     public interface OnQuantityChangeListener {
         void onQuantityChanged(QuantityView quantityView, String extraMessage, int oldQuantity, int newQuantity, boolean programmatically);
 //        void onQuantityChanged(int oldQuantity, int newQuantity, boolean programmatically);
-
         void onLimitReached();
     }
 
@@ -83,7 +82,6 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
         }
         addButtonTextColor = a.getColor(R.styleable.QuantityView_qv_addButtonTextColor, Color.BLACK);
 
-//blah
         addTrayButtonText = getResources().getString(R.string.qv_addTray);
         if (a.hasValue(R.styleable.QuantityView_qv_addTrayButtonText)) {
             addTrayButtonText = a.getString(R.styleable.QuantityView_qv_addTrayButtonText);
@@ -93,7 +91,6 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
             addTrayButtonBackground = a.getDrawable(R.styleable.QuantityView_qv_addTrayButtonBackground);
         }
         addTrayButtonTextColor = a.getColor(R.styleable.QuantityView_qv_addTrayButtonTextColor, Color.BLACK);
-//blah
 
         removeButtonText = getResources().getString(R.string.qv_remove);
         if (a.hasValue(R.styleable.QuantityView_qv_removeButtonText)) {
@@ -105,7 +102,6 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
         }
         removeButtonTextColor = a.getColor(R.styleable.QuantityView_qv_removeButtonTextColor, Color.BLACK);
 
-//blah
         removeTrayButtonText = getResources().getString(R.string.qv_removeTray);
         if (a.hasValue(R.styleable.QuantityView_qv_removeTrayButtonText)) {
             removeTrayButtonText = a.getString(R.styleable.QuantityView_qv_removeTrayButtonText);
@@ -115,8 +111,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
             removeTrayButtonBackground = a.getDrawable(R.styleable.QuantityView_qv_removeTrayButtonBackground);
         }
         removeTrayButtonTextColor = a.getColor(R.styleable.QuantityView_qv_removeTrayButtonTextColor, Color.BLACK);
-//blah
-//blah
+
         clearButtonText = getResources().getString(R.string.qv_clear);
         if (a.hasValue(R.styleable.QuantityView_qv_clearButtonText)) {
             clearButtonText = a.getString(R.styleable.QuantityView_qv_clearButtonText);
@@ -126,7 +121,6 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
             clearButtonBackground = a.getDrawable(R.styleable.QuantityView_qv_clearButtonBackground);
         }
         clearButtonTextColor = a.getColor(R.styleable.QuantityView_qv_clearButtonTextColor, Color.BLACK);
-//blah
 
         quantity = a.getInt(R.styleable.QuantityView_qv_quantity, 0);
         maxQuantity = a.getInt(R.styleable.QuantityView_qv_maxQuantity, Integer.MAX_VALUE);
@@ -223,7 +217,6 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
         mClearButton.setOnClickListener(this);
     }
 
-
     public void setQuantityClickListener(OnClickListener ocl) {
         mTextViewClickListener = ocl;
     }
@@ -238,7 +231,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
                 quantity += 1;
                 mTextViewQuantity.setText(String.valueOf(quantity));
                 if (onQuantityChangeListener != null)
-                    onQuantityChangeListener.onQuantityChanged(this,"", oldQty, quantity, false);
+                    onQuantityChangeListener.onQuantityChanged(this, this.getProductName(), oldQty, quantity, false);
             }
         } else if (v == mTrayButtonAdd) {
             if (quantity + 15 > maxQuantity) {
@@ -248,7 +241,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
                 quantity += 15;
                 mTextViewQuantity.setText(String.valueOf(quantity));
                 if (onQuantityChangeListener != null)
-                    onQuantityChangeListener.onQuantityChanged(this,"", oldQty, quantity, false);
+                    onQuantityChangeListener.onQuantityChanged(this, this.getProductName(), oldQty, quantity, false);
             }
         } else if (v == mButtonRemove) {
             if (quantity - 1 < minQuantity) {
@@ -258,7 +251,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
                 quantity -= 1;
                 mTextViewQuantity.setText(String.valueOf(quantity));
                 if (onQuantityChangeListener != null)
-                    onQuantityChangeListener.onQuantityChanged(this,"", oldQty, quantity, false);
+                    onQuantityChangeListener.onQuantityChanged(this, this.getProductName(), oldQty, quantity, false);
             }
         } else if (v == mTrayButtonRemove) {
             if (quantity - 15 < minQuantity) {
@@ -268,13 +261,16 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
                 quantity -= 15;
                 mTextViewQuantity.setText(String.valueOf(quantity));
                 if (onQuantityChangeListener != null)
-                    onQuantityChangeListener.onQuantityChanged(this,"", oldQty, quantity, false);
+                    onQuantityChangeListener.onQuantityChanged(this, this.getProductName(), oldQty, quantity, false);
             }
         }else if (v == mClearButton) {
-            onQuantityChangeListener.onQuantityChanged(this, "", this.getQuantity(), 0, false);
+            onQuantityChangeListener.onQuantityChanged(this, this.getProductName(), this.getQuantity(), 0, false);
             setQuantity(0);
         } else if (v == mTextViewQuantity) {
-            if (!quantityDialog) return;
+//            Toast.makeText(getContext(), "quantityDialog " + quantityDialog, Toast.LENGTH_LONG).show();
+//            quantityDialog = true;
+//            Toast.makeText(getContext(), "quantityDialog " + quantityDialog, Toast.LENGTH_LONG).show();
+//            if (!quantityDialog) return;
 
             if (mTextViewClickListener != null) {
                 mTextViewClickListener.onClick(v);
@@ -284,7 +280,12 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
             builder.setTitle(labelDialogTitle);
 
             final View inflate = LayoutInflater.from(getContext()).inflate(R.layout.qv_dialog_changequantity, null, false);
-            final EditText et = (EditText) inflate.findViewById(R.id.qv_et_change_qty);
+            final TextView productName = (TextView) inflate.findViewById(R.id.productName);
+            final TextView oldQuantity = (TextView) inflate.findViewById(R.id.oldQuantity);
+            final EditText et = (EditText) inflate.findViewById(R.id.et_qty);
+
+            oldQuantity.setText("quantity: "+getQuantity());
+            productName.setText(getProductName());
             et.setText(String.valueOf(quantity));
 
             builder.setView(inflate);
@@ -297,6 +298,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
                     if (isValidNumber(newQuantity)) {
                         int intNewQuantity = Integer.parseInt(newQuantity);
                         Log.d(VIEW_LOG_TAG, "newQuantity " + intNewQuantity + " max " + maxQuantity);
+                        Toast.makeText(getContext(), "Product: " + getProductName() + "\nOld Quantity: "+getQuantity()+"\nNew Quantity: "+intNewQuantity, Toast.LENGTH_LONG);
                         if (intNewQuantity > maxQuantity) {
                             Toast.makeText(getContext(), "Maximum quantity allowed is " + maxQuantity, Toast.LENGTH_LONG).show();
                         } else if (intNewQuantity < minQuantity) {

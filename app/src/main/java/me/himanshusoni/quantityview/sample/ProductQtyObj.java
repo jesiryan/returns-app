@@ -5,10 +5,10 @@ import me.himanshusoni.quantityview.QuantityView;
 import static me.himanshusoni.quantityview.sample.MainActivity.toTwoPlaces;
 
 public class ProductQtyObj {
-    QuantityView quantityView;
-    String productName;
-    int productQty;
-    float productPrice;
+    private QuantityView quantityView;
+    private String productName;
+    private int productQty;
+    private float productPrice;
 
     public ProductQtyObj(String productName, QuantityView quantityView, float productPrice){
         this.quantityView = quantityView;
