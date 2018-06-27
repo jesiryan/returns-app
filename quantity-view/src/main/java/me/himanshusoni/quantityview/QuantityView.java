@@ -45,7 +45,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
     private String labelNegativeButton = "Cancel";
 
     public interface OnQuantityChangeListener {
-        void onQuantityChanged(QuantityView quantityView, String extraMessage, int oldQuantity, int newQuantity, boolean programmatically);
+        void onQuantityChanged(QuantityView quantityView, String productName, int oldQuantity, int newQuantity, boolean programmatically);
 //        void onQuantityChanged(int oldQuantity, int newQuantity, boolean programmatically);
         void onLimitReached();
     }
@@ -284,7 +284,8 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
             final TextView oldQuantity = (TextView) inflate.findViewById(R.id.oldQuantity);
             final EditText et = (EditText) inflate.findViewById(R.id.et_qty);
 
-            oldQuantity.setText("quantity: "+getQuantity());
+            final int oldQuantityInt = getQuantity();
+            oldQuantity.setText("quantity: "+oldQuantityInt);
             productName.setText(getProductName());
             et.setText(String.valueOf(quantity));
 
@@ -305,10 +306,10 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
                             Toast.makeText(getContext(), "Minimum quantity allowed is " + minQuantity, Toast.LENGTH_LONG).show();
                         } else {
                             setQuantity(intNewQuantity);
+                            onQuantityChangeListener.onQuantityChanged(QuantityView.this, getProductName(), oldQuantityInt, getQuantity(), false);
                             hideKeyboard(et);
                             dialog.dismiss();
                         }
-
                     } else {
                         Toast.makeText(getContext(), "Enter valid number", Toast.LENGTH_LONG).show();
                     }
