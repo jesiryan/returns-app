@@ -285,7 +285,7 @@ public class QuantityView extends LinearLayout implements View.OnClickListener {
             final EditText et = (EditText) inflate.findViewById(R.id.et_qty);
 
             final int oldQuantityInt = getQuantity();
-            oldQuantity.setText("quantity: "+oldQuantityInt);
+            oldQuantity.setText("(quantity: "+oldQuantityInt+")");
             productName.setText(getProductName());
             et.setText(String.valueOf(quantity));
 
