@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,8 +43,6 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
 
         CopyOnWriteArrayList<ProductQtyObj> quantities = getProductQtyObjList();
         for (final ProductQtyObj qv : quantities) {
-//            qv.getQuantityView().setQuantityClickListener(getQuantityChangeViewListener(qv.getQuantityView()));
-//            getQuantityChangeViewListener(qv.getQuantityView());
             qv.getQuantityView().setOnQuantityChangeListener(this);
         }
 
@@ -212,4 +211,5 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
 
         return super.onOptionsItemSelected(item);
     }
+
 }

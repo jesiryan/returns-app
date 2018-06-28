@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '25.1.0'
 
     defaultConfig {
         applicationId "me.himanshusoni.quantityview.sample"
@@ -29,8 +29,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.1.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:25.1.0'
+//    implementation 'com.google.android.gms:play-services-vision:15.0.2'
     //    compile 'me.himanshusoni.quantityview:quantity-view:1.2.0'
-    compile project(':quantity-view')
+    implementation project(':quantity-view')
 }
