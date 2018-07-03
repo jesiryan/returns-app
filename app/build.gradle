@@ -34,4 +34,10 @@ dependencies {
 //    implementation 'com.google.android.gms:play-services-vision:15.0.2'
     //    compile 'me.himanshusoni.quantityview:quantity-view:1.2.0'
     implementation project(':quantity-view')
+
+//    implementation 'com.android.support:support-v4:24.2.0'
+    // Important - the CameraSource implementation in this project requires version 8.1 or higher.
+    implementation 'com.google.android.gms:play-services-vision:9.4.0+'
+    implementation 'com.android.support:design:24.2.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 }

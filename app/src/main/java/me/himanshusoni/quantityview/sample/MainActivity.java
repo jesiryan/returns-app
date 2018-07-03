@@ -7,19 +7,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+
 
 import java.text.DecimalFormat;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -27,6 +21,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import me.himanshusoni.quantityview.QuantityView;
 
 public class MainActivity extends AppCompatActivity implements QuantityView.OnQuantityChangeListener {
+
+    private static final int RC_BARCODE_CAPTURE = 9001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
 
     private class CalculateActivity extends Activity implements View.OnClickListener {
         public void onClick(View v) {
-            alertOneButton();
+            showCalculationResults();
         }
     }
 
@@ -118,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
     }
 
     public void clearAll() {
-//        CopyOnWriteArrayList<QuantityView> quantities = getQuantityViews();
         CopyOnWriteArrayList<ProductQtyObj> quantities = getProductQtyObjList();
         for (ProductQtyObj q : quantities) {
             if (q.getProductQty() != 0) {
@@ -171,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
         quantityView.setQuantity(newQuantity);
     }
 
-    public void alertOneButton() {
+    public void showCalculationResults() {
         new AlertDialog.Builder(this)
                 .setTitle("Total Value")
                 .setMessage(getAllProductsAndPrices() + "\n" + "Total: " + calculate())
@@ -210,6 +205,17 @@ public class MainActivity extends AppCompatActivity implements QuantityView.OnQu
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void alertTest() {
+        new AlertDialog.Builder(this)
+                .setTitle("Test")
+                .setMessage("Test")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
     }
 
 }
