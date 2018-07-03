@@ -22,8 +22,6 @@ import me.himanshusoni.quantityview.QuantityView;
 
 public class MainActivity extends AppCompatActivity implements QuantityView.OnQuantityChangeListener {
 
-    private static final int RC_BARCODE_CAPTURE = 9001;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
